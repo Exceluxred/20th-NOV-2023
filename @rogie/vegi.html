@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    
+    <style >
+        
+        
+        body {
+  font-family: sans-serif;
+	background-color: black;
+}
+
+h1 {
+	color: white;
+	font-family: cursive;
+	text-align: center;
+}
+
+.veggie-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.veggie-img:hover {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
+
+.container {
+	display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-gap: 15px;
+}
+
+button {
+	padding: 8px 16px;
+	background-color: white;
+	color: black;
+	border: none;
+	cursor: pointer;
+	margin: 0 5px;	
+}
+
+button:hover {
+  background-color: black;
+	color: white;
+	border: 1px solid white;
+}
+
+button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="vegetables">
+    <ul class="page">
+			<h1>Veggies to harvest</h1>
+        <div class="container">
+            <img src="https://source.unsplash.com/GHRT9j21m2M" class="veggie-img" alt="Carrots" />
+            <img src="https://source.unsplash.com/OlXUUQedQyM" class="veggie-img" alt="Tomato" />
+            <img src="https://source.unsplash.com/e3qXIZNHqX4" class="veggie-img" alt="Broccoli" />
+            <img src="https://source.unsplash.com/2GiRcLP_jkI" class="veggie-img" alt="Cucumber" />
+            <img src="https://source.unsplash.com/6AAptb2kBak" class="veggie-img" alt="Spinach" />
+    </ul>
+</div>
+<!-- Page 1 -->
+<ul class="page">
+    <div class="container">
+            <img src="https://source.unsplash.com/B0s3Xndk6tw" class="veggie-img" alt="Potato" />
+            <img src="https://source.unsplash.com/nZUQgW0FVnc" class="veggie-img" alt="Pepper" />
+            <img src="https://source.unsplash.com/Xk5wR3Voscc" class="veggie-img" alt="Egglplant" />
+            <img src="https://source.unsplash.com/hugb85v0J04" class="veggie-img" alt="Lettuce" />
+            <img src="https://source.unsplash.com/GrHWJVA1KTA" class="veggie-img" alt="Onion" />
+</ul>
+<!-- Page 2 -->
+
+<ul class="page">
+    <div class="container">
+            <img src="https://source.unsplash.com/7OQ4oekzMzY" class="veggie-img" alt="Zuchini" />
+            <img src="https://source.unsplash.com/0XVrBLy73rw" class="veggie-img" alt="Cauliflower" />
+            <img src="https://source.unsplash.com/3uJcymbLnYA" class="veggie-img" alt="Kale" />
+            <img src="https://source.unsplash.com/4jHCWfX3_G4" class="veggie-img" alt="Cabbage" />
+            <img src="https://source.unsplash.com/Dm-qxdynoEc" class="veggie-img" alt="Mushroom" />
+</ul>
+
+</div>
+<div class="pagination">
+    <button id="prevPage">Previous</button>
+    <button id="nextPage">Next</button>
+</div>
+<script >
+    
+    
+    document.addEventListener("DOMContentLoaded", function () {
+    const pages = document.querySelectorAll(".page");
+    const prevButton = document.getElementById("prevPage");
+    const nextButton = document.getElementById("nextPage");
+    let currentPage = 0;
+
+    function showPage(pageNumber) {
+        pages.forEach((page, index) => {
+            if (index === pageNumber) {
+                page.style.display = "block";
+            } else {
+                page.style.display = "none";
+            }
+        });
+    }
+
+    function updateButtons() {
+        prevButton.disabled = currentPage === 0;
+        nextButton.disabled = currentPage === pages.length - 1;
+    }
+
+    prevButton.addEventListener("click", function () {
+        if (currentPage > 0) {
+            currentPage--;
+            showPage(currentPage);
+            updateButtons();
+        }
+    });
+
+    nextButton.addEventListener("click", function () {
+        if (currentPage < pages.length - 1) {
+            currentPage++;
+            showPage(currentPage);
+            updateButtons();
+        }
+    });
+
+    showPage(currentPage);
+    updateButtons();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,
+    300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
+
+    
+</head>
+<body id = 'gradient' >
+    <style>
+    body{
+        background: linear-gradient(to right, rgb(142,233,255),rgb(255,0,0));
+        text-align: center;
+        font: 'Raleway', sans-serif;
+        top: 15%;
+        color: white;
+        font-family: poppins;
+    }
+
+    h1{
+        text-transform: uppercase;
+        letter-spacing: 1em;
+        color: rgba(0,0,0,.5);
+        font: 'Raleway', sans-serif;
+    }
+
+    h2{
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        font: 'Raleway', sans-serif;
+        
+    }
+    </style>
+    <h1>Background Generator</h1>
+    <div><input type = 'color' class = 'color1'  value = '#0daefe'>
+        <input type = 'color' class = 'color2' value = '#00ffee'>
+    </div>
+    <h2>Current Css background:</h2>
+    <h3></h3>
+        
+        
+        
+        
+    <!-- <script src="background.js"></script>     -->
+    <script>
+        var body = document.getElementById('gradient');
+        var color1 = document.querySelector('.color1')
+        var color2 = document.querySelector('.color2')
+        var color_code = document.querySelector('h3')
+        
+        function setGradient(){
+            body.style.background = 'linear-gradient(to right, ' + color1.value + ', ' +  color2.value + ')';
+            color_code.textContent = body.style.background + ';';
+        
+        }
+        color1.addEventListener('input', setGradient);
+        color2.addEventListener('input', setGradient);
+    </script>
+
+    
+</body>
+</html>
